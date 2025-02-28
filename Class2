@@ -1,0 +1,44 @@
+package event_management_system;
+
+public class Event 
+{
+	private String eventName;
+	private String nameOfTheParticipant;
+	private int age;
+	private static double entryFee=1000;
+	public String getEventName() {
+		return eventName;
+	}
+	public void setEventName(String eventName) {
+		this.eventName = eventName;
+	}
+	public String getNameOfTheParticipant() {
+		return nameOfTheParticipant;
+	}                                        
+	public void setNameOfTheParticipant(String nameOfTheParticipant) {
+		this.nameOfTheParticipant = nameOfTheParticipant;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public double getEntryFee() {
+		return entryFee;
+	}
+	public void setEntryFee(double entryFee) {
+		this.entryFee = entryFee;
+	}
+	@Override
+	public String toString() {
+		return "Event [eventName=" + eventName + ", nameOfTheParticipant=" + nameOfTheParticipant + ", age=" + age
+				+ ", entryFee=" + entryFee + "]";
+	}
+	public Event(String eventName, String nameOfTheParticipant, int age) {
+		super();
+		this.eventName = eventName;
+		this.nameOfTheParticipant = nameOfTheParticipant;
+		this.age = age;
+	}
+}
