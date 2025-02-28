@@ -1,0 +1,41 @@
+package event_management_system;
+
+public class EventManagementSystem
+{
+
+	public static void main(String[] args) throws InterruptedException 
+	{
+		
+		EventFactory ef=new EventFactory();
+		ef.animate("Welcome to ROWDY EVENTS");
+		System.out.println("\u001b[1m"+"\u001b[31m"+"welcome to  the Rowdy events (make your event Memorable)"+"\u001b[0m");
+		System.out.println("\u001b[1m"+"\u001b[32m"+"welcome to  the Rowdy events (make your event Memorable)"+"\u001b[0m");
+		System.out.println("\u001b[1m"+"\u001b[33m"+"welcome to  the Rowdy events (make your event Memorable)"+"\u001b[0m");
+		System.out.println("\u001b[1m"+"\u001b[34m"+"welcome to  the Rowdy events (make your event Memorable)"+"\u001b[0m");
+		System.out.println("\u001b[1m"+"\u001b[35m"+"welcome to  the Rowdy events (make your event Memorable)"+"\u001b[0m");
+		System.out.println("\u001b[1m"+"\u001b[36m"+"welcome to  the Rowdy events (make your event Memorable)"+"\u001b[0m");
+		System.out.println("\u001b[1m"+"\u001b[37m"+"welcome to  the Rowdy events (make your event Memorable)"+"\u001b[0m");
+		System.out.println("\u001b[1m"+"\u001b[90m"+"welcome to  the Rowdy events (make your event Memorable)"+"\u001b[0m");
+
+		System.out.println("login to application");
+		 boolean status=ef.login();
+		if(status) 
+		{
+			while(true)
+			{
+				int choice=ef.list();
+				switch(choice)
+				{
+				case 1:ef.addEvent();break;
+				case 2:ef.removeParticipanntName();break;
+				case 3:ef.updateName();break;
+				case 4:ef.display();break;
+				case 5:System.exit(0);;break;
+				case 6:ef.search();break;
+				}
+			}
+		}
+		
+		
+	}
+}
