@@ -1,0 +1,169 @@
+package event_management_system;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Random;
+import java.util.Scanner;
+
+public class EventFactory
+{
+	Scanner s=new Scanner(System.in);
+	ArrayList<Event> t=new ArrayList<Event>();
+	public boolean login()
+	{
+		System.out.println("enter the 10 digit moble number");
+		long number=s.nextLong();
+		boolean status=false;
+		if(number>6000000000l && number<9999999999l )
+		{
+			int generatedOTP=generateOTP();
+			System.out.println("your OTP is "+generatedOTP);
+			System.out.println("eneter the OTP");
+			int eneteredOTP=s.nextInt();
+			if(eneteredOTP==generatedOTP)
+			{
+				System.out.println("\u001b[32m"+"❤❤❤❤🍿🍿🍿🍿-----login sucessfully----❤❤❤❤"+"\u001b[0m");
+				status=true;
+			}
+			else
+			{
+				System.out.println("\u001b[31m"+"❌❌❌❌❌-----invalid OTP-----❌❌❌❌❌"+"\u001b[0m");
+				System.out.println("please try again");
+			}
+		}
+		else
+		{
+			System.out.println("❌❌❌❌❌-----invalid  mobile number-----❌❌❌❌❌");
+			System.out.println("\u001b[36m"+"Mobile Number must contain 10 digits"+"\u001b[0m");
+		}
+		return status;
+		
+	}
+	public int generateOTP()
+	{
+		Random r=new Random();
+		int otp=r.nextInt(10000);
+		return otp;
+		
+	}
+	public int  list()
+	{
+		System.out.println("1.add details");
+		System.out.println("2.remove event name");
+		System.out.println("3.update details");
+		System.out.println("4.display");
+		System.out.println("5.exit");
+		System.out.println("6.search");
+		int choice=s.nextInt(); 
+		return choice;
+	}
+	public void addEvent()
+	{
+		
+		System.out.println("enter event name");
+		String eventName=s.next();
+		System.out.println("enter participant  name");
+		String name=s.next();
+		System.out.println("enter participant age");
+		int age=s.nextInt();
+		t.add(new Event(eventName, name, age));
+		System.out.println("details added sucessfully-----👍👍👍");
+	}
+	public void display()
+	{
+
+		System.out.println("\u001B[1m"+"\u001B[34m");
+		System.out.printf("%44s","-| eventmanagementsystem |-");
+		System.out.println("\u001B[0m");
+		System.out.println("\u001B[31m"+"|--------------|-----------------------|-----------|--------------|"+"\u001B[32m");
+		System.out.printf("%-15s %-25s %-10S %-10s","eventName","nameOfTheParticipant","age","entryFee=1000");
+		System.out.println();
+		System.out.println("\u001B[31m"+"|--------------|-----------------------|-----------|--------------|"+"\u001B[32m");
+		
+		for(Event e:t)
+		{
+			System.out.printf("%-15s %-25s %-10S %-10s",e.getEventName(),e.getNameOfTheParticipant(),e.getAge(),e.getEntryFee());
+		}
+		
+	}
+	public void removeParticipanntName()
+	{
+		System.out.println("enter event name");
+		String evenetName=s.next();
+	
+		System.out.println("enter particpant name");
+		String name=s.next();
+		
+		Iterator<Event> it=t.iterator();
+		boolean status=false;
+		while(it.hasNext())
+		{
+			Event ev=it.next();
+			if(ev.getEventName().equals(evenetName)&&ev.getNameOfTheParticipant().equals(name))
+			{
+				it.remove();
+				
+				status=true;
+				break;
+			}
+		}
+		if(status)
+		{
+			System.out.println("data removed sucessfully");
+		}
+		else
+		{
+			System.out.println("data not found");
+		}	
+	}
+	public void updateName()
+	{
+		System.out.println("enter event name");
+		String evName=s.next();
+		System.out.println("enter partipant name to update");
+		String name=s.next();
+		for(Event e:t)
+		{
+			if(e.getEventName().equalsIgnoreCase(evName)&&e.getNameOfTheParticipant().equalsIgnoreCase(name))
+			{
+				System.out.println("enter up name");
+				String upName=s.next();
+				e.setEventName(upName);
+				System.out.println("enter up name");
+				String upname=s.next();
+				e.setNameOfTheParticipant(upname);
+			}
+		}
+		
+	}
+	public void search()
+	{
+		System.out.println("eneter name of participant");
+		String name=s.next();
+		for(Event e:t)
+		{
+			if(e.getNameOfTheParticipant().equalsIgnoreCase(name))
+					{
+				System.out.println(e);
+				System.out.println("found");
+					}
+			else
+			{
+				System.out.println("not found");
+			}
+		}
+	}
+	public void animate(String string) throws InterruptedException
+	{
+		for(int i=0;i<string.length();i++)
+		{
+			
+			System.out.print(string.charAt(i));
+			
+				Thread.sleep(100);
+		
+		}
+		System.out.println();
+	}
+
+}
